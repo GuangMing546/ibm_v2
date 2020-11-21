@@ -123,7 +123,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public String insertTeacher(Teacher teacher) {
         String teacherJod=teacher.getTeacherJod();
-        Set<String> classIds;
+        Collection<String> classIds;
         if (teacherJod.equals("chinese")){
             classIds=classTeacherMapper.getClassByChineseTeacherId("0");
             if(!classIds.containsAll(teacher.getClassId())){
@@ -176,7 +176,7 @@ public class TeacherServiceImpl implements TeacherService {
     public String deleteTeacherById(Teacher teacher) {
         teacherMapper.deleteByTeacherId(teacher);
         String teacherJod=teacher.getTeacherJod();
-        Set<String> classIdsExist;
+        Collection<String> classIdsExist;
         if(teacherJod.equals("chinese")){
             classIdsExist=classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId());
             for (String s : classIdsExist) {

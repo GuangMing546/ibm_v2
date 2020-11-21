@@ -2,22 +2,21 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wyu.ibm.mapper.TeacherMapper">
+<mapper namespace="com.wyu.ibm_v2.mapper.TeacherMapper">
     <!--    admin用户可对teacher表进行的操作-->
-    <select id="getAllTeacher" resultType="com.wyu.ibm.entity.Teacher">
-        select id,teacher_name,user_name,password from teacher
+    <select id="getAllTeacher" resultType="com.wyu.ibm_v2.entity.Teacher">
+        select id,teacher_id,teacher_name,teacher_jod,user_name,password
+        from teacher where teacher_jod=#{teacherJod}
     </select>
-
-    <insert id="insertTeacher">
-        insert into teacher (user_name,password,teacher_name) values (#{userName},#{password},#{teacherName})
-    </insert>
-
-    <update id="updateTeacher">
-        update teacher set user_name=#{userName},password=#{password},teacher_name=#{teacherName}
-            where id=#{id}
+    <update id="updateTeacherById">
+        update teacher set teacher_name=#{teacherName},user_name=#{userName},password=#{password}
+        where id=#{id}
     </update>
-
-    <delete id="deleteTeacherById">
+    <insert id="insertTeacher">
+        insert into teacher (teacher_name,teacher_jod,user_name,password,teacher_id)
+        values (#{teacherName},#{teacherJod},#{userName},#{password},#{teacherId})
+    </insert>
+    <delete id="deleteByTeacherId">
         delete from teacher where id=#{id}
     </delete>
 
@@ -25,5 +24,7 @@
     <update id="updateTeacherPassword">
         update teacher set password=#{password} where id=#{id}
     </update>
+
+
 
 </mapper>

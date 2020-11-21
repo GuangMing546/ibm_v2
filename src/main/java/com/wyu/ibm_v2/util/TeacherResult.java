@@ -1,5 +1,6 @@
 package com.wyu.ibm_v2.util;
 
+import java.util.Collection;
 import java.util.Set;
 
 public class TeacherResult {
@@ -9,13 +10,13 @@ public class TeacherResult {
     private String userName;
     private String password;
     private String teacherId;
-    private Set<String> classId;
+    private Collection<String> classId;
 
-    public Set<String> getClassId() {
+    public Collection<String> getClassId() {
         return classId;
     }
 
-    public void setClassId(Set<String> classId) {
+    public void setClassId(Collection<String> classId) {
         this.classId = classId;
     }
 
