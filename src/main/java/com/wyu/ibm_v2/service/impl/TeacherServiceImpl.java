@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -54,10 +55,8 @@ public class TeacherServiceImpl implements TeacherService {
     public String update(Teacher teacher) {
         //修改功能teacher_ID和teacher_jod不能修改
         String teacherJod=teacher.getTeacherJod();
-        Set<String> classIds;
-        Set<String> classIdsExist;
-
-
+        Collection<String> classIds;
+        Collection<String> classIdsExist;
 
         if(teacherJod.equals("chinese")){
             classIds = classTeacherMapper.getEmptyClassToChineseUpdate(teacher.getTeacherId());

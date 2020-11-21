@@ -1,5 +1,6 @@
 package com.wyu.ibm_v2.entity;
 
+import java.util.Collection;
 import java.util.Set;
 
 public class Teacher {
@@ -10,7 +11,7 @@ public class Teacher {
     private String password;
     private String teacherId;
     //这个属性是自己加的
-    private Set<String> classId;
+    private Collection<String> classId;
 
     public Integer getId() {
         return id;
@@ -20,11 +21,11 @@ public class Teacher {
         this.id = id;
     }
 
-    public Set<String> getClassId() {
+    public Collection<String> getClassId() {
         return classId;
     }
 
-    public void setClassId(Set<String> classId) {
+    public void setClassId(Collection<String> classId) {
         this.classId = classId;
     }
 
