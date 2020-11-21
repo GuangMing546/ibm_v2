@@ -2,38 +2,41 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wyu.ibm.mapper.StudentMapper">
+<mapper namespace="com.wyu.ibm_v2.mapper.StudentMapper">
 <!--admin用户可以对student表进行的操作-->
-    <select id="getAllStudentToAdmin" resultType="com.wyu.ibm.entity.Student">
-        select id,student_number,student_name,student_class,user_name,password,score from student
+    <select id="getAllStudentToAdmin" resultType="com.wyu.ibm_v2.entity.Student">
+        select id,student_number,student_name,student_class,user_name,password from student
     </select>
 
-    <insert id="insertStudent">
+    <insert id="insertStudentFromAdmin">
         insert into student (user_name,password,student_class,student_name,student_number)
          values (#{userName},#{password},#{studentClass},#{studentName},#{studentNumber})
     </insert>
     
-    <update id="updateStudent">
+    <update id="updateStudentFromAdmin">
         update student set user_name=#{userName},password=#{password},student_class=#{studentClass},
                          student_name=#{studentName},student_number=#{studentNumber} where id=#{id}
     </update>
 
-    <delete id="deleteStudentById">
+    <delete id="deleteStudentFromAdmin">
         delete from student where id=#{id}
     </delete>
 
 <!--teacher用户可以对student表进行的操作-->
-    <select id="getAllStudentToTeacher" resultType="com.wyu.ibm.entity.Student">
-        select id,student_number,student_name,student_class,score from student
+    <select id="getAllStudentToTeacher" resultType="com.wyu.ibm_v2.entity.Student">
+        select id,student_number,student_name,student_class,chinese_score,math_score,english_score
+        from student where class_id=#{classId}
     </select>
 
     <update id="updateStudentScore">
-        update student set score=#{score} where id=#{id}
+        update student set chinese_score=#{chinsesScore},math_score=#{mathScore},
+        english_score=#{englishScore} where id=#{id}
     </update>
 
 <!--student用户可以对student表进行的操作-->
-    <select id="getStudentById" resultType="com.wyu.ibm.entity.Student">
-        select student_name,student_class,student_number,score from student where id=#{id}
+    <select id="getStudentById" resultType="com.wyu.ibm_v2.entity.Student">
+        select student_name,student_class,student_number,
+        chinese_score,math_score,english_score from student where id=#{id}
     </select>
 
     <update id="updateStudentPassword">

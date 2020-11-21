@@ -1,6 +1,6 @@
 package com.wyu.ibm_v2.util;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class LoginResult {

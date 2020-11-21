@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin
 @RestController
@@ -18,7 +19,7 @@ public class TeacherController {
     /*Admin用户对teacher表的操作*/
     //Admin界面展示所有的老师信息
     @GetMapping("/getTeachersToAdmin/{teacherJod}")
-    public List<Teacher> getTeachersToAdmin(@PathVariable String teacherJod){
+    public Set<Teacher> getTeachersToAdmin(@PathVariable String teacherJod){
         System.out.println(teacherJod);
         return teacherService.getTeachers(teacherJod);
     }

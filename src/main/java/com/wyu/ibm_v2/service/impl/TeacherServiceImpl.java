@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -28,8 +29,8 @@ public class TeacherServiceImpl implements TeacherService {
 
 
     @Override
-    public List<Teacher> getTeachers(String teacherJod) {
-        List<Teacher> teachers=teacherMapper.getAllTeacher(teacherJod);
+    public Set<Teacher> getTeachers(String teacherJod) {
+        Set<Teacher> teachers=teacherMapper.getAllTeacher(teacherJod);
 
         if (teacherJod.equals("chinese")){
             for (Teacher teacher : teachers) {

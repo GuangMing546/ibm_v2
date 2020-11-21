@@ -10,7 +10,7 @@ spring:
 #mybatis的配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
-#  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
 #show sql
 logging:
   level:
