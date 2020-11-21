@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyu.ibm.mapper.LoginMapper">
+    <select id="getAdminByUserName" resultType="com.wyu.ibm.entity.LoginBean">
+        select id,password from admin where user_name=#{userName}
+    </select>
+
+    <select id="getTeacherByUserName" resultType="com.wyu.ibm.entity.LoginBean">
+        select id,password,teacher_name name from teacher where user_name=#{userName}
+    </select>
+
+    <select id="getStudentByUserName" resultType="com.wyu.ibm.entity.LoginBean">
+        select id,password,student_name name from student where user_name=#{userName}
+    </select>
+
+</mapper>

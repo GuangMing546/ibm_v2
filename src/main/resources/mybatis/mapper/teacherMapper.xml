@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyu.ibm_v2.mapper.TeacherMapper">
+    <!--    admin用户可对teacher表进行的操作-->
+    <select id="getAllTeacher" resultType="com.wyu.ibm_v2.entity.Teacher">
+        select id,teacher_id,teacher_name,teacher_jod,user_name,password
+        from teacher where teacher_jod=#{teacherJod}
+    </select>
+    <update id="updateTeacherById">
+        update teacher set teacher_name=#{teacherName},user_name=#{userName},password=#{password}
+        where id=#{id}
+    </update>
+    <insert id="insertTeacher">
+        insert into teacher (teacher_name,teacher_jod,user_name,password,teacher_id)
+        values (#{teacherName},#{teacherJod},#{userName},#{password},#{teacherId})
+    </insert>
+    <delete id="deleteByTeacherId">
+        delete from teacher where id=#{id}
+    </delete>
+
+    <!--    teacher用户对它自己的密码管理-->
+    <update id="updateTeacherPassword">
+        update teacher set password=#{password} where id=#{id}
+    </update>
+
+
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyu.ibm_v2.mapper.ClassTeacherMapper">
+
+<!--    返回老师教的那几个班-->
+    <select id="getClassIdByChineseTeacherId" resultType="java.lang.String">
+        select class_id from class_teacher where chinese_teacher=#{teacherId}
+    </select>
+    <select id="getClassIdByMathTeacherId" resultType="java.lang.String">
+        select class_id from class_teacher where math_teacher=#{teacherId}
+    </select>
+    <select id="getClassIdByEnglishTeacherId" resultType="java.lang.String">
+        select class_id from class_teacher where English_teacher=#{teacherId}
+    </select>
+
+<!--原来更新用的，那个老师还可以选择什么班-->
+    <select id="getEmptyClassToChineseUpdate" resultType="java.lang.String">
+         select class_id from class_teacher where chinese_teacher=#{teacherId} or chinese_teacher='0'
+    </select>
+    <select id="getEmptyClassToMathUpdate" resultType="java.lang.String">
+         select class_id from class_teacher where math_teacher=#{teacherId} or math_teacher='0'
+    </select>
+    <select id="getEmptyClassToEnglishUpdate" resultType="java.lang.String">
+         select class_id from class_teacher where english_teacher=#{teacherId} or english_teacher='0'
+    </select>
+
+
+<!--    &lt;!&ndash;用来插入用的&ndash;&gt;-->
+<!--    <select id="getEmptyClassToChinese" resultType="java.lang.String">-->
+<!--        select class_id from class_teacher where chinese_teacher='0'-->
+<!--    </select>-->
+<!--    <select id="getEmptyClassToMath" resultType="java.lang.String">-->
+<!--        select class_id from class_teacher where math_teacher='0'-->
+<!--    </select>-->
+<!--    <select id="getEmptyClassToEnglish" resultType="java.lang.String">-->
+<!--        select class_id from class_teacher where english_teacher='0'-->
+<!--    </select>-->
+
+<!--更新，删除，插入都是这个-->
+    <update id="updateChineseTeacher" >
+        update class_teacher set chinese_teacher=#{param2} where class_id=#{param1}
+    </update>
+    <update id="updateMathTeacher" >
+        update class_teacher set math_teacher=#{param2} where class_id=#{param1}
+    </update>
+    <update id="updateEnglishTeacher" >
+        update class_teacher set english_teacher=#{param2} where class_id=#{param1}
+    </update>
+
+
+
+
+
+
+</mapper>

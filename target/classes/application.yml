@@ -1,0 +1,18 @@
+server:
+  port: 8081
+#数据源的配置
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/ibm_v2?useUnicode=true&characterEncoding=utf-8&serverTimezone=CST
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#mybatis的配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+#  mapper-locations: classpath:mybatis/mapper/*.xml
+#show sql
+logging:
+  level:
+    com.wyu.ibm.mapper: debug
+
