@@ -4,11 +4,9 @@ import com.wyu.ibm_v2.entity.Teacher;
 import com.wyu.ibm_v2.mapper.ClassTeacherMapper;
 import com.wyu.ibm_v2.mapper.TeacherMapper;
 import com.wyu.ibm_v2.service.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -18,19 +16,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Resource
     TeacherMapper teacherMapper;
-
-    @Override
-    public int updateTeacherPassword(Teacher teacher) {
-        return teacherMapper.updateTeacherPassword(teacher);
-    }
-
     @Resource
     ClassTeacherMapper classTeacherMapper;
 
 
     @Override
-    public Set<Teacher> getTeachers(String teacherJod) {
-        Set<Teacher> teachers=teacherMapper.getAllTeacher(teacherJod);
+    public List<Teacher> getTeachers(String teacherJod) {
+        List<Teacher> teachers=teacherMapper.getAllTeacher(teacherJod);
 
         if (teacherJod.equals("chinese")){
             for (Teacher teacher : teachers) {
@@ -49,6 +41,7 @@ public class TeacherServiceImpl implements TeacherService {
             }
 
         }
+
         return teachers;
     }
 
@@ -56,8 +49,8 @@ public class TeacherServiceImpl implements TeacherService {
     public String update(Teacher teacher) {
         //修改功能teacher_ID和teacher_jod不能修改
         String teacherJod=teacher.getTeacherJod();
-        Collection<String> classIds;
-        Collection<String> classIdsExist;
+        Set<String> classIds;
+        Set<String> classIdsExist;
 
         if(teacherJod.equals("chinese")){
             classIds = classTeacherMapper.getEmptyClassToChineseUpdate(teacher.getTeacherId());
@@ -89,7 +82,7 @@ public class TeacherServiceImpl implements TeacherService {
             if(0 == flag){
                 return "userName已存在";
             }
-            //现把它原来的置为0
+            //先把它原来的置为0
             for (String s : classIdsExist ) {
                 classTeacherMapper.updateChineseTeacher(s,"0");
             }
@@ -109,7 +102,7 @@ public class TeacherServiceImpl implements TeacherService {
             if(0==flag){
                 return "userName已存在";
             }
-            //现把它原来的置为0
+            //先把它原来的置为0
             for (String s : classIdsExist ) {
                 classTeacherMapper.updateChineseTeacher(s,"0");
             }
@@ -175,7 +168,6 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public String deleteTeacherById(Teacher teacher) {
-        teacherMapper.deleteByTeacherId(teacher);
         String teacherJod=teacher.getTeacherJod();
         Set<String> classIdsExist;
         if(teacherJod.equals("chinese")){
@@ -183,6 +175,7 @@ public class TeacherServiceImpl implements TeacherService {
             for (String s : classIdsExist) {
                 classTeacherMapper.updateChineseTeacher(s,"0");
             }
+            teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
         }
         if(teacherJod.equals("math")){
@@ -190,6 +183,7 @@ public class TeacherServiceImpl implements TeacherService {
             for (String s : classIdsExist) {
                 classTeacherMapper.updateMathTeacher(s,"0");
             }
+            teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
         }
         if(teacherJod.equals("english")){
@@ -197,9 +191,16 @@ public class TeacherServiceImpl implements TeacherService {
             for (String s : classIdsExist) {
                 classTeacherMapper.updateEnglishTeacher(s,"0");
             }
+            teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
         }
 
         return "false";
     }
+    @Override
+    public int updateTeacherPassword(Teacher teacher) {
+
+        return teacherMapper.updateTeacherPassword(teacher);
+    }
+
 }

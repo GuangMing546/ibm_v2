@@ -3,23 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6fa8606f-74ff-457f-8ab5-227dc4293250" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/entity/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/entity/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/ClassTeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/ClassTeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/StudentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/TeacherMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/TeacherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/StudentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/util/LoginResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/util/LoginResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/util/TeacherResult.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/classTeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/classTeacherMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wyu/ibm_v2/IbmV2Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wyu/ibm_v2/IbmV2Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/loginMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/loginMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/studentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/studentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/teacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/teacherMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605947161625</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="test init">
+      <created>1605969082884</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605969082884</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,10 +173,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605904027980" />
-    <state x="372" y="25" key="CommitChangelistDialog2" timestamp="1605947161253">
+    <state x="372" y="25" key="CommitChangelistDialog2" timestamp="1605971827074">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="372" y="25" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1605947161253" />
+    <state x="372" y="25" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1605971827074" />
     <state x="632" y="323" key="Github.ShareDialog" timestamp="1605878512710">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -225,10 +221,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="270" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1605879468166" />
-    <state x="361" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605947187443">
+    <state x="361" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605969084157">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605947187443" />
+    <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605969084157" />
     <state x="562" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605967046526">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

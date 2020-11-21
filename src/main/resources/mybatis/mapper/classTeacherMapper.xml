@@ -5,6 +5,7 @@
 <mapper namespace="com.wyu.ibm_v2.mapper.ClassTeacherMapper">
 
 <!--    返回老师教的那几个班-->
+<!--    也可以作为插入老师操作时候，把teacherId置为0，来查出还没分配老师的班级-->
     <select id="getClassByChineseTeacherId" resultType="java.lang.String">
         select class_id from class_teacher where chinese_teacher=#{teacherId}
     </select>
