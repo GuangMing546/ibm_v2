@@ -16,6 +16,12 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Resource
     TeacherMapper teacherMapper;
+
+    @Override
+    public int updateTeacherPassword(Teacher teacher) {
+        return teacherMapper.updateTeacherPassword(teacher);
+    }
+
     @Resource
     ClassTeacherMapper classTeacherMapper;
 

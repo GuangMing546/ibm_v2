@@ -14,9 +14,9 @@ public interface TeacherMapper {
     public int insertTeacher(Teacher teacher);
     public int updateTeacherById(Teacher teacher);
     //删除操作
-
     public int deleteByTeacherId(Teacher teacher);
 
+    //Teacher用户对teacher表进行的操作
     public int updateTeacherPassword(Teacher teacher);
 
 
