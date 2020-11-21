@@ -1,11 +1,25 @@
 package com.wyu.ibm_v2.util;
 
+import java.util.List;
+import java.util.Set;
+
 public class LoginBean {
-    private String type;
+    private String type; //用来接收角色的类型
     private Integer id;
+    private String teacherName;
+    private String teacherJod;
     private String userName;
     private String password;
-    private String name;
+    private String teacherId;
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;
@@ -15,20 +29,20 @@ public class LoginBean {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
-    public String getType() {
-        return type;
+    public String getTeacherJod() {
+        return teacherJod;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTeacherJod(String teacherJod) {
+        this.teacherJod = teacherJod;
     }
 
     public String getUserName() {
@@ -46,4 +60,14 @@ public class LoginBean {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+
 }

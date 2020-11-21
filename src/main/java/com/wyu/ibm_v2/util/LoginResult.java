@@ -1,9 +1,21 @@
 package com.wyu.ibm_v2.util;
 
+import java.util.List;
+import java.util.Set;
+
 public class LoginResult {
     private String url;
     private String name;
     private Integer id; //原来修改密码的时候的依据凭证
+    private Set<String> classId; //如果是老师，它所管理的class有多少
+
+    public Set<String> getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Set<String> classId) {
+        this.classId = classId;
+    }
 
     public Integer getId() {
         return id;

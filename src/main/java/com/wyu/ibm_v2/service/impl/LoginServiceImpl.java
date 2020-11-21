@@ -1,6 +1,8 @@
 package com.wyu.ibm_v2.service.impl;
 
 
+import com.wyu.ibm_v2.controller.LoginController;
+import com.wyu.ibm_v2.mapper.ClassTeacherMapper;
 import com.wyu.ibm_v2.mapper.LoginMapper;
 import com.wyu.ibm_v2.service.LoginService;
 import com.wyu.ibm_v2.util.LoginBean;
@@ -13,6 +15,8 @@ import javax.annotation.Resource;
 public class LoginServiceImpl implements LoginService {
     @Resource
     LoginMapper loginMapper;
+    @Resource
+    ClassTeacherMapper classTeacherMapper;
 
     //返回的数据是对象LoginResult：id，url，name
     @Override
@@ -40,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
                 passwordFromDB=loginBean.getPassword();
                 if(passwordFromDB.equals(password)){
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getName());
+                    loginResult.setName(loginBean.getTeacherName());
                     loginResult.setUrl("Admin");
                     return loginResult;
                 }
@@ -51,9 +55,19 @@ public class LoginServiceImpl implements LoginService {
                     return loginResult;
                 }
                 passwordFromDB=loginBean.getPassword();
+                String teacherJod=loginBean.getTeacherJod();
                 if(passwordFromDB.equals(password)){
+                    if (teacherJod.equals("chinese")){
+                        loginResult.setClassId(classTeacherMapper.getClassByChineseTeacherId(loginBean.getTeacherId()));
+                    }
+                    if (teacherJod.equals("math")){
+                        loginResult.setClassId(classTeacherMapper.getClassByMathTeacherId(loginBean.getTeacherId()));
+                    }
+                    if (teacherJod.equals("english")){
+                        loginResult.setClassId(classTeacherMapper.getClassByEnglishTeacherId(loginBean.getTeacherId()));
+                    }
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getName());
+                    loginResult.setName(loginBean.getTeacherName());
                     loginResult.setUrl("Teacher");
                     return loginResult;
                 }
@@ -66,7 +80,7 @@ public class LoginServiceImpl implements LoginService {
                 passwordFromDB=loginBean.getPassword();
                 if(passwordFromDB.equals(password)){
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getName());
+                    loginResult.setName(loginBean.getTeacherName());
                     loginResult.setUrl("Student");
                     return loginResult;
                 }
