@@ -13,13 +13,13 @@ import java.util.Set;
 public class ShowClassIdController {
     @Autowired
     QueryClassIdImpl queryClassId;
-    @GetMapping("queryClassIdForInsert/{teacherJod}")
+    @GetMapping("/queryClassIdForInsert/{teacherJod}")
     public Set<String> queryClassIdForInsert(@PathVariable String teacherJod){
         System.out.println(teacherJod);
         Set<String> a=queryClassId.queryClassIdForInsert(teacherJod);
         return a;
     }
-    @GetMapping("queryClassIdForInsert")
+    @GetMapping("/queryClassIdForUpdate")
     public Set<String> queryClassIdForUpdate(@RequestBody Teacher teacher){
         return queryClassId.queryClassIdForUpdate(teacher.getTeacherId(),teacher.getTeacherJod());
     }

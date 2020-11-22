@@ -170,7 +170,7 @@ public class TeacherServiceImpl implements TeacherService {
                 classTeacherMapper.updateChineseTeacher(s,"0");
             }
             teacherMapper.deleteByTeacherId(teacher.getId());
-            return "true";
+            return "success";
         }
         if(teacherJod.equals("math")){
             classIdsExist=classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId());
@@ -178,7 +178,7 @@ public class TeacherServiceImpl implements TeacherService {
                 classTeacherMapper.updateMathTeacher(s,"0");
             }
             teacherMapper.deleteByTeacherId(teacher.getId());
-            return "true";
+            return "success";
         }
         if(teacherJod.equals("english")){
             classIdsExist=classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId());
@@ -186,7 +186,7 @@ public class TeacherServiceImpl implements TeacherService {
                 classTeacherMapper.updateEnglishTeacher(s,"0");
             }
             teacherMapper.deleteByTeacherId(teacher.getId());
-            return "true";
+            return "success";
         }
 
         return "false";
