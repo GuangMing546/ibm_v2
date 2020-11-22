@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6fa8606f-74ff-457f-8ab5-227dc4293250" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/TeacherMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/mapper/TeacherMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/util/TeacherResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/classTeacherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/classTeacherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wyu/ibm_v2/controller/TeacherController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="23a18785-6aec-46fa-b2c4-5bd1a015051f" name="Default Changelist" comment="" />
+      <changelist id="6fa8606f-74ff-457f-8ab5-227dc4293250" name="Default Changelist" comment="" />
       <created>1605877853538</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -93,6 +88,7 @@
       <workItem from="1605877856936" duration="253000" />
       <workItem from="1605878148329" duration="21404000" />
       <workItem from="1605931085130" duration="13302000" />
+      <workItem from="1606009555863" duration="840000" />
     </task>
     <task id="LOCAL-00001" summary="version2">
       <created>1605877935036</created>
@@ -181,50 +177,50 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="632" y="323" key="Github.ShareDialog/0.0.1536.864@0.0.1536.864" timestamp="1605878512710" />
-    <state width="1491" height="194" key="GridCell.Tab.0.bottom" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.0.bottom" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.0.center" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.0.center" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.0.left" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.0.left" timestamp="1605971913829">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.0.right" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1605971913829" />
+    <state width="745" height="194" key="GridCell.Tab.0.right" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.1.bottom" timestamp="1605968637213">
+    <state width="745" height="194" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.1.bottom" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605968637213" />
-    <state width="1491" height="194" key="GridCell.Tab.1.center" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.1.center" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.1.left" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.1.left" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
-    <state width="1491" height="194" key="GridCell.Tab.1.right" timestamp="1605968637212">
+    <state width="745" height="194" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
+    <state width="745" height="194" key="GridCell.Tab.1.right" timestamp="1605971913830">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="194" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1605968637212" />
+    <state width="745" height="194" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1605971913830" />
     <state x="591" y="143" key="RollbackChangesDialog" timestamp="1605940689318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="591" y="143" key="RollbackChangesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605940689318" />
-    <state x="270" y="14" key="SettingsEditor" timestamp="1605879468166">
+    <state x="270" y="14" key="SettingsEditor" timestamp="1606010258680">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="270" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1605879468166" />
-    <state x="361" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605969084157">
+    <state x="270" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1606010258680" />
+    <state x="361" y="154" key="Vcs.Push.Dialog.v2" timestamp="1605971859379">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605969084157" />
+    <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1605971859379" />
     <state x="562" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605967046526">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
