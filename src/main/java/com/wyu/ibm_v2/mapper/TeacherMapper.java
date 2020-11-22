@@ -8,7 +8,7 @@ import java.util.Set;
 public interface TeacherMapper {
 
     //Admin用户可以对Teacher表进行的操作
-    public List<Teacher> getAllTeacher(String teacherJod);
+    public List<Teacher> getAllTeacher();
     public int insertTeacher(Teacher teacher);
     public int updateTeacherById(Teacher teacher);
     //删除操作

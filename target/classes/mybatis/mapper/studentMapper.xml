@@ -25,7 +25,7 @@
 <!--teacher用户可以对student表进行的操作-->
     <select id="getAllStudentToTeacher" resultType="com.wyu.ibm_v2.entity.Student">
         select id,student_number,student_name,student_class,chinese_score,math_score,english_score
-        from student where class_id=#{classId}
+        from student where student_class=#{classId}
     </select>
 
     <update id="updateStudentScore">

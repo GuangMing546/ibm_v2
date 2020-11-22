@@ -21,27 +21,21 @@ public class TeacherServiceImpl implements TeacherService {
 
 
     @Override
-    public List<Teacher> getTeachers(String teacherJod) {
-        List<Teacher> teachers=teacherMapper.getAllTeacher(teacherJod);
+    public List<Teacher> getTeachers() {
+        List<Teacher> teachers=teacherMapper.getAllTeacher();
+        for (Teacher teacher : teachers) {
+            String teacherJod=teacher.getTeacherJod();
+            if (teacherJod.equals("chinese")){
+                    teacher.setClassId(classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId()));
 
-        if (teacherJod.equals("chinese")){
-            for (Teacher teacher : teachers) {
-                teacher.setClassId(classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId()));
+            }
+            if (teacherJod.equals("math")){
+                    teacher.setClassId(classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId()));
+            }
+            if (teacherJod.equals("english")){
+                    teacher.setClassId(classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId()));
             }
         }
-        if (teacherJod.equals("math")){
-            for (Teacher teacher : teachers) {
-                teacher.setClassId(classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId()));
-            }
-
-        }
-        if (teacherJod.equals("english")){
-            for (Teacher teacher : teachers) {
-                teacher.setClassId(classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId()));
-            }
-
-        }
-
         return teachers;
     }
 
@@ -117,7 +111,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public String insertTeacher(Teacher teacher) {
         String teacherJod=teacher.getTeacherJod();
-        Collection<String> classIds;
+        Set<String> classIds;
         if (teacherJod.equals("chinese")){
             classIds=classTeacherMapper.getClassByChineseTeacherId("0");
             if(!classIds.containsAll(teacher.getClassId())){

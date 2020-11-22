@@ -6,7 +6,7 @@
     <!--    admin用户可对teacher表进行的操作-->
     <select id="getAllTeacher" resultType="com.wyu.ibm_v2.entity.Teacher">
         select id,teacher_id,teacher_name,teacher_jod,user_name,password
-        from teacher where teacher_jod=#{teacherJod}
+        from teacher
     </select>
     <update id="updateTeacherById">
         update teacher set teacher_name=#{teacherName},user_name=#{userName},password=#{password}

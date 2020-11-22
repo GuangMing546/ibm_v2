@@ -18,10 +18,10 @@ public class TeacherController {
 
     /*Admin用户对teacher表的操作*/
     //Admin界面展示所有的老师信息
-    @GetMapping("/getTeachersToAdmin/{teacherJod}")
-    public List<Teacher> getTeachersToAdmin(@PathVariable String teacherJod){
-        System.out.println(teacherJod);
-        return teacherService.getTeachers(teacherJod);
+    @GetMapping("/getTeachersToAdmin")
+    public List<Teacher> getTeachersToAdmin(){
+        System.out.println();
+        return teacherService.getTeachers();
     }
     //Admin界面插入老师功能
     @PostMapping("/insertTeacher")

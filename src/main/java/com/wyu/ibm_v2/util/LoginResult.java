@@ -7,6 +7,7 @@ public class LoginResult {
     private String url;
     private String name;
     private Integer id; //原来修改密码的时候的依据凭证
+    private String teacherJod;
     private Set<String> classId; //如果是老师，它所管理的class有多少
 
     public Set<String> getClassId() {
@@ -35,6 +36,14 @@ public class LoginResult {
 
     public String getName() {
         return name;
+    }
+
+    public String getTeacherJod() {
+        return teacherJod;
+    }
+
+    public void setTeacherJod(String teacherJod) {
+        this.teacherJod = teacherJod;
     }
 
     public void setName(String name) {

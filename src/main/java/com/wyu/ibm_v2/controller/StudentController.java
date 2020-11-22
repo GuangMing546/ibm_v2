@@ -47,6 +47,8 @@ public class StudentController {
     //teacher界面展示所有的学生信息
     @GetMapping("/getStudentsToTeacher/{classId}")
     public List<Student> getStudentsToTeacher(@PathVariable String classId){
+        System.out.println(classId);
+        List<Student> a=studentService.getAllStudentToTeacher(classId);
         return studentService.getAllStudentToTeacher(classId);
     }
     //teacher界面修改学生的成绩

@@ -6,7 +6,7 @@ import java.util.Set;
 public class LoginBean {
     private String type; //用来接收角色的类型
     private Integer id;
-    private String teacherName;
+    private String name;
     private String teacherJod;
     private String userName;
     private String password;
@@ -29,12 +29,12 @@ public class LoginBean {
         this.id = id;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    public String getName() {
+        return name;
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTeacherJod() {

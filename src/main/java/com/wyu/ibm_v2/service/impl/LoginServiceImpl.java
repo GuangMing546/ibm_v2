@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
                 passwordFromDB=loginBean.getPassword();
                 if(passwordFromDB.equals(password)){
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getTeacherName());
+                    loginResult.setName(loginBean.getName());
                     loginResult.setUrl("Admin");
                     return loginResult;
                 }
@@ -67,7 +67,8 @@ public class LoginServiceImpl implements LoginService {
                         loginResult.setClassId(classTeacherMapper.getClassByEnglishTeacherId(loginBean.getTeacherId()));
                     }
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getTeacherName());
+                    loginResult.setName(loginBean.getName());
+                    loginResult.setTeacherJod(loginBean.getTeacherJod());
                     loginResult.setUrl("Teacher");
                     return loginResult;
                 }
@@ -80,7 +81,7 @@ public class LoginServiceImpl implements LoginService {
                 passwordFromDB=loginBean.getPassword();
                 if(passwordFromDB.equals(password)){
                     loginResult.setId(loginBean.getId());
-                    loginResult.setName(loginBean.getTeacherName());
+                    loginResult.setName(loginBean.getName());
                     loginResult.setUrl("Student");
                     return loginResult;
                 }

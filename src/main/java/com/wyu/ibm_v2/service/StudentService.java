@@ -13,7 +13,7 @@ public interface StudentService {
     public int deleteStudentFromAdmin(Integer id);
 
     //Teacher用户可以对student表进行的操作
-    public List<Student> getAllStudentToTeacher(String classIds);
+    public List<Student> getAllStudentToTeacher(String classId);
     public int updateStudentScore(Student student);
 
     //student用户可以对student表进行的操作
