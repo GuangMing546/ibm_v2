@@ -3,6 +3,7 @@ package com.wyu.ibm_v2.mapper;
 import com.wyu.ibm_v2.entity.Student;
 
 import java.util.List;
+import java.util.Set;
 
 public interface StudentMapper {
     //Admin用户可以对student表进行的操作

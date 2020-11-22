@@ -1,6 +1,5 @@
 package com.wyu.ibm_v2.service.impl;
 
-import com.wyu.ibm_v2.entity.ClassTeacher;
 import com.wyu.ibm_v2.entity.Student;
 import com.wyu.ibm_v2.mapper.ClassTeacherMapper;
 import com.wyu.ibm_v2.mapper.StudentMapper;
@@ -9,22 +8,20 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
     @Resource
     StudentMapper studentMapper; //用来对student表进行操作
-    @Resource
-    ClassTeacherMapper classTeacherMapper;
 
+
+    //Admin的对student表的操作
     @Override
     public List<Student> getAllStudentToAdmin() {
         return studentMapper.getAllStudentToAdmin();
 
     }
-
     @Override
     public int insertStudentFromAdmin(Student student) {
         return studentMapper.insertStudentFromAdmin(student);
@@ -40,6 +37,7 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.deleteStudentFromAdmin(id);
     }
 
+    //Teacher用户对student表的操作
     @Override
     public List<Student> getAllStudentToTeacher(String classId) {
         return studentMapper.getAllStudentToTeacher(classId);

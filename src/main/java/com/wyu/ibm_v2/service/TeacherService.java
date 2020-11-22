@@ -2,8 +2,8 @@ package com.wyu.ibm_v2.service;
 
 import com.wyu.ibm_v2.entity.Teacher;
 
-
 import java.util.List;
+import java.util.Set;
 
 public interface TeacherService {
     public List<Teacher> getTeachers(String teacherJod);

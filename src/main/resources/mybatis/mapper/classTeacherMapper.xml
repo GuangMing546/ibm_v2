@@ -5,13 +5,14 @@
 <mapper namespace="com.wyu.ibm_v2.mapper.ClassTeacherMapper">
 
 <!--    返回老师教的那几个班-->
-    <select id="getClassIdByChineseTeacherId" resultType="java.lang.String">
+<!--    也可以作为插入老师操作时候，把teacherId置为0，来查出还没分配老师的班级-->
+    <select id="getClassByChineseTeacherId" resultType="java.lang.String">
         select class_id from class_teacher where chinese_teacher=#{teacherId}
     </select>
-    <select id="getClassIdByMathTeacherId" resultType="java.lang.String">
+    <select id="getClassByMathTeacherId" resultType="java.lang.String">
         select class_id from class_teacher where math_teacher=#{teacherId}
     </select>
-    <select id="getClassIdByEnglishTeacherId" resultType="java.lang.String">
+    <select id="getClassByEnglishTeacherId" resultType="java.lang.String">
         select class_id from class_teacher where English_teacher=#{teacherId}
     </select>
 
@@ -27,16 +28,6 @@
     </select>
 
 
-<!--    &lt;!&ndash;用来插入用的&ndash;&gt;-->
-<!--    <select id="getEmptyClassToChinese" resultType="java.lang.String">-->
-<!--        select class_id from class_teacher where chinese_teacher='0'-->
-<!--    </select>-->
-<!--    <select id="getEmptyClassToMath" resultType="java.lang.String">-->
-<!--        select class_id from class_teacher where math_teacher='0'-->
-<!--    </select>-->
-<!--    <select id="getEmptyClassToEnglish" resultType="java.lang.String">-->
-<!--        select class_id from class_teacher where english_teacher='0'-->
-<!--    </select>-->
 
 <!--更新，删除，插入都是这个-->
     <update id="updateChineseTeacher" >
@@ -48,10 +39,5 @@
     <update id="updateEnglishTeacher" >
         update class_teacher set english_teacher=#{param2} where class_id=#{param1}
     </update>
-
-
-
-
-
 
 </mapper>
