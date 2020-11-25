@@ -7,9 +7,7 @@ import com.wyu.ibm_v2.service.TeacherService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
@@ -26,14 +24,14 @@ public class TeacherServiceImpl implements TeacherService {
         for (Teacher teacher : teachers) {
             String teacherJod=teacher.getTeacherJod();
             if (teacherJod.equals("chinese")){
-                    teacher.setClassId(classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId()));
+                    teacher.setClassId(classTeacherMapper.getClassByChineseTeacherId(teacher.getId()));
 
             }
             if (teacherJod.equals("math")){
-                    teacher.setClassId(classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId()));
+                    teacher.setClassId(classTeacherMapper.getClassByMathTeacherId(teacher.getId()));
             }
             if (teacherJod.equals("english")){
-                    teacher.setClassId(classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId()));
+                    teacher.setClassId(classTeacherMapper.getClassByEnglishTeacherId(teacher.getId()));
             }
         }
         return teachers;
@@ -41,69 +39,110 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public String update(Teacher teacher) {
-        //修改功能teacher_ID和teacher_jod不能修改
-        String teacherJod=teacher.getTeacherJod();
-        Set<String> classIds;
-        Set<String> classIdsExist;
+        //修改功能:teacherJod能修改，没有teacherId，用主键Id来代替
 
-        if(teacherJod.equals("chinese")){
-            classIds = classTeacherMapper.getEmptyClassToChineseUpdate(teacher.getTeacherId());
-            classIdsExist=classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId());
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
-            int flag=teacherMapper.updateTeacherById(teacher); //修改teacher表的信息
-            if(0 == flag){
-                return "userName已存在";
-            }
-            //现把它原来的置为0
-            for (String s : classIdsExist ) {
-                classTeacherMapper.updateChineseTeacher(s,"0");
-            }
-            for (String classId : classIds) {           //修改class_teacher表的信息
-                classTeacherMapper.updateChineseTeacher(classId,teacher.getTeacherId());
-            }
-            return "success";
+        List<String> classIds ;
+        List<String> classIdsExist ;
+
+        //这个是得到修改前老师的工作职务是啥
+        String teacherOldJod = teacherMapper.getTeacherById(teacher.getId()).getTeacherJod();
+        String teacherNewJod=teacher.getTeacherJod();
+        System.out.println("旧职业"+teacherOldJod);
+        System.out.println("新职业"+teacherNewJod);
+        //先更新老师
+        int flag=teacherMapper.updateTeacherById(teacher); //修改teacher表的信息,注意Id是不能修改的
+        if(0==flag){
+            return "更新失败";
         }
+        //语文
+        if(teacherOldJod.equals("chinese")){
+            classIds = classTeacherMapper.getEmptyClassToChineseUpdate(teacher.getId()); //旧的classId
+            classIdsExist=classTeacherMapper.getClassByChineseTeacherId(teacher.getId()); //新的classId
 
-        if(teacherJod.equals("math")){
-            classIds = classTeacherMapper.getEmptyClassToMathUpdate(teacher.getTeacherId());
-            classIdsExist=classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId());
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
-            int flag=teacherMapper.updateTeacherById(teacher); //修改teacher表的信息
-            if(0 == flag){
-                return "userName已存在";
-            }
-            //先把它原来的置为0
+            System.out.println("classId"+classIds);
+            System.out.println("classIdsExist"+classIdsExist);
+
+            //把老师原来所教的班级置为0
             for (String s : classIdsExist ) {
-                classTeacherMapper.updateChineseTeacher(s,"0");
+                classTeacherMapper.updateChineseTeacher(s,0);
             }
-            for (String classId : classIds) {           //修改class_teacher表的信息
-                classTeacherMapper.updateChineseTeacher(classId,teacher.getTeacherId());
+            //修改class表的数据
+            if(teacherNewJod.equals("chinese")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateChineseTeacher(classId, teacher.getId());
+                }
+                return "success";
             }
-            return "success";
+            if(teacherNewJod.equals("math")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateMathTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
+            if(teacherNewJod.equals("english")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateEnglishTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
         }
-
-        if(teacherJod.equals("english")){
-            classIds = classTeacherMapper.getEmptyClassToEnglishUpdate(teacher.getTeacherId());
-            classIdsExist=classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId());
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
-            int flag=teacherMapper.updateTeacherById(teacher); //修改teacher表的信息
-            if(0==flag){
-                return "userName已存在";
-            }
-            //先把它原来的置为0
+        //数学
+        if(teacherOldJod.equals("math")){
+            classIds = classTeacherMapper.getEmptyClassToMathUpdate(teacher.getId()); //旧的classId
+            classIdsExist=classTeacherMapper.getClassByMathTeacherId(teacher.getId()); //新的classId
+            //把老师原来所教的班级置为0
             for (String s : classIdsExist ) {
-                classTeacherMapper.updateChineseTeacher(s,"0");
+                classTeacherMapper.updateMathTeacher(s,0);
             }
-            for (String classId : classIds) {           //修改class_teacher表的信息
-                classTeacherMapper.updateEnglishTeacher(classId,teacher.getTeacherId());
+            //修改class表的数据
+            if(teacherNewJod.equals("chinese")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateChineseTeacher(classId, teacher.getId());
+                }
+                return "success";
             }
-            return "success";
+            if(teacherNewJod.equals("math")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateMathTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
+            if(teacherNewJod.equals("english")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateEnglishTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
+        }
+        //英语
+        if(teacherOldJod.equals("english")){
+            classIds = classTeacherMapper.getEmptyClassToEnglishUpdate(teacher.getId()); //旧的classId
+            classIdsExist=classTeacherMapper.getClassByEnglishTeacherId(teacher.getId()); //新的classId
+
+
+            //把老师原来所教的班级置为0
+            for (String s : classIdsExist ) {
+                classTeacherMapper.updateEnglishTeacher(s,0);
+            }
+            //修改class表的数据
+            if(teacherNewJod.equals("chinese")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateChineseTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
+            if(teacherNewJod.equals("math")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateMathTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
+            if(teacherNewJod.equals("english")) {
+                for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
+                    classTeacherMapper.updateEnglishTeacher(classId, teacher.getId());
+                }
+                return "success";
+            }
         }
         return "false";
     }
@@ -111,90 +150,105 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public String insertTeacher(Teacher teacher) {
         String teacherJod=teacher.getTeacherJod();
-        Set<String> classIds;
+        List<String> classIds;
         if (teacherJod.equals("chinese")){
-            classIds=classTeacherMapper.getClassByChineseTeacherId("0");
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
+//            classIds=classTeacherMapper.getClassByChineseTeacherId(0);
+//            if(!classIds.containsAll(teacher.getClassId())){
+//                return "班级填写错误";
+//            }
+            teacher.setId(teacherMapper.getMaxId()+1);
             int flag=teacherMapper.insertTeacher(teacher);
             if (flag==0){
-                return "teacherId或userName已存在";
+                return "userName已存在";
             }
+            System.out.println(teacher.getId());
             for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
-                classTeacherMapper.updateChineseTeacher(classId,teacher.getTeacherId());
+                classTeacherMapper.updateChineseTeacher(classId,teacher.getId());
             }
             return "success";
         }
 
         if (teacherJod.equals("math")){
-            classIds=classTeacherMapper.getClassByMathTeacherId("0");
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
+//            classIds=classTeacherMapper.getClassByMathTeacherId(0);
+//            if(!classIds.containsAll(teacher.getClassId())){
+//                return "班级填写错误";
+//            }
+            teacher.setId(teacherMapper.getMaxId()+1);
             int flag=teacherMapper.insertTeacher(teacher);
             if (flag==0){
                 return "teacherId或userName已存在";
             }
             for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
-                classTeacherMapper.updateMathTeacher(classId,teacher.getTeacherId());
+                classTeacherMapper.updateMathTeacher(classId,teacher.getId());
             }
             return "success";
         }
 
         if (teacherJod.equals("english")){
-            classIds=classTeacherMapper.getClassByEnglishTeacherId("0");
-            if(!classIds.containsAll(teacher.getClassId())){
-                return "班级填写错误";
-            }
+//            classIds=classTeacherMapper.getClassByEnglishTeacherId(0);
+//            if(!classIds.containsAll(teacher.getClassId())){
+//                return "班级填写错误";
+//            }
+            teacher.setId(teacherMapper.getMaxId()+1);
             int flag=teacherMapper.insertTeacher(teacher);
             if (flag==0){
                 return "teacherId或userName已存在";
             }
             for (String classId : teacher.getClassId()) {           //修改class_teacher表的信息
-                classTeacherMapper.updateEnglishTeacher(classId,teacher.getTeacherId());
+                classTeacherMapper.updateEnglishTeacher(classId,teacher.getId());
             }
             return "success";
         }
-
         return "false";
     }
 
     @Override
     public String deleteTeacherById(Teacher teacher) {
-        String teacherJod=teacher.getTeacherJod();
-        Collection<String> classIdsExist;
+        String teacherJod=teacher.getTeacherJod(); //获取其教授的科目
+        List<String> classIdsExist;
+        System.out.println("teacherID:"+teacher.getId());
+
         if(teacherJod.equals("chinese")){
-            classIdsExist=classTeacherMapper.getClassByChineseTeacherId(teacher.getTeacherId());
+            classIdsExist=classTeacherMapper.getClassByChineseTeacherId(teacher.getId());
+            System.out.println("他原来教语文的，教的班级是"+classIdsExist);
+            // 让他教的班级都置为0
             for (String s : classIdsExist) {
-                classTeacherMapper.updateChineseTeacher(s,"0");
+                classTeacherMapper.updateChineseTeacher(s,0);
             }
+            // 删除这个教师
             teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
+
         }
         if(teacherJod.equals("math")){
-            classIdsExist=classTeacherMapper.getClassByMathTeacherId(teacher.getTeacherId());
+            classIdsExist=classTeacherMapper.getClassByMathTeacherId(teacher.getId());
             for (String s : classIdsExist) {
-                classTeacherMapper.updateMathTeacher(s,"0");
+                classTeacherMapper.updateMathTeacher(s,0);
             }
             teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
         }
         if(teacherJod.equals("english")){
-            classIdsExist=classTeacherMapper.getClassByEnglishTeacherId(teacher.getTeacherId());
+            classIdsExist=classTeacherMapper.getClassByEnglishTeacherId(teacher.getId());
             for (String s : classIdsExist) {
-                classTeacherMapper.updateEnglishTeacher(s,"0");
+                classTeacherMapper.updateEnglishTeacher(s,0);
             }
             teacherMapper.deleteByTeacherId(teacher.getId());
             return "true";
         }
-
         return "false";
     }
+
+    @Override
+    public Teacher getTeacherById(Integer id) {
+        return teacherMapper.getTeacherById(id);
+    }
+
     @Override
     public int updateTeacherPassword(Teacher teacher) {
-
         return teacherMapper.updateTeacherPassword(teacher);
     }
+
+
 
 }

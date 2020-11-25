@@ -3,6 +3,7 @@ package com.wyu.ibm_v2.controller;
 
 import com.wyu.ibm_v2.entity.Student;
 import com.wyu.ibm_v2.service.impl.StudentServiceImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/test")
+//@Api(value = "/StudentController",tags = "接口开放示例")
 public class StudentController {
     @Autowired
     StudentServiceImpl studentService;
@@ -48,7 +50,11 @@ public class StudentController {
     @GetMapping("/getStudentsToTeacher/{classId}")
     public List<Student> getStudentsToTeacher(@PathVariable String classId){
         System.out.println(classId);
-        List<Student> a=studentService.getAllStudentToTeacher(classId);
+        List<Student> a =studentService.getAllStudentToTeacher(classId);
+        for(Student s:a){
+            System.out.println(s.toString());
+        }
+
         return studentService.getAllStudentToTeacher(classId);
     }
     //teacher界面修改学生的成绩

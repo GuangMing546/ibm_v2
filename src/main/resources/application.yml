@@ -11,6 +11,10 @@ spring:
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+#配置驼峰命名出错（寻找解决办法）
+# configuration:
+#     mapUnderscoreToCamelCase: true
+
 #show sql
 logging:
   level:

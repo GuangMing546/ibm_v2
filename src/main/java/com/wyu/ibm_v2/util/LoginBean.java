@@ -10,7 +10,6 @@ public class LoginBean {
     private String teacherJod;
     private String userName;
     private String password;
-    private String teacherId;
 
 
     public String getType() {
@@ -61,13 +60,6 @@ public class LoginBean {
         this.password = password;
     }
 
-    public String getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
 
 
 }

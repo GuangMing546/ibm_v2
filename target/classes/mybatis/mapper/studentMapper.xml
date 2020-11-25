@@ -9,8 +9,8 @@
     </select>
 
     <insert id="insertStudentFromAdmin">
-        insert into student (user_name,password,student_class,student_name,student_number)
-         values (#{userName},#{password},#{studentClass},#{studentName},#{studentNumber})
+        insert into student (id,user_name,password,student_class,student_name,student_number)
+         values (#{id},#{userName},#{password},#{studentClass},#{studentName},#{studentNumber})
     </insert>
     
     <update id="updateStudentFromAdmin">
@@ -29,7 +29,7 @@
     </select>
 
     <update id="updateStudentScore">
-        update student set chinese_score=#{chinsesScore},math_score=#{mathScore},
+        update student set chinese_score=#{chineseScore},math_score=#{mathScore},
         english_score=#{englishScore} where id=#{id}
     </update>
 
@@ -42,4 +42,8 @@
     <update id="updateStudentPassword">
         update student set password=#{password} where id=#{id}
     </update>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        select max(id) from student
+    </select>
 </mapper>

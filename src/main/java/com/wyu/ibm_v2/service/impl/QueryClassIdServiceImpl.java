@@ -7,39 +7,42 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Service
-public class QueryClassIdImpl implements QueryClassIdService {
+public class QueryClassIdServiceImpl implements QueryClassIdService {
     @Resource
     ClassTeacherMapper classTeacherMapper;
     @Override
-    public Set<String> queryClassIdForInsert(String teacherJod) {
-        Set<String> classId=null;
+    public List<String> queryClassIdForInsert(String teacherJod) {
+        List<String> classId=null;
         if (teacherJod.equals("chinese")){
-            classId=classTeacherMapper.getClassByChineseTeacherId("0");
+            classId=classTeacherMapper.getClassByChineseTeacherId(0);
             System.out.println(classId);
         }
         if (teacherJod.equals("math")){
-            classId=classTeacherMapper.getClassByMathTeacherId("0");
+            classId=classTeacherMapper.getClassByMathTeacherId(0);
+            System.out.println(classId);
         }
         if (teacherJod.equals("english")){
-            classId=classTeacherMapper.getClassByEnglishTeacherId("0");
+            classId=classTeacherMapper.getClassByEnglishTeacherId(0);
+            System.out.println(classId);
         }
         return classId;
     }
 
     @Override
-    public Set<String> queryClassIdForUpdate(String teacherId,String teacherJod) {
-        Set<String> classId=null;
+    public List<String> queryClassIdForUpdate(Integer id,String teacherJod) {
+        List<String> classId=null;
         if (teacherJod.equals("chinese")){
-            classId=classTeacherMapper.getEmptyClassToChineseUpdate(teacherId);
+            classId=classTeacherMapper.getEmptyClassToChineseUpdate(id);
             System.out.println(classId);
         }
         if (teacherJod.equals("math")){
-            classId=classTeacherMapper.getEmptyClassToMathUpdate(teacherId);
+            classId=classTeacherMapper.getEmptyClassToMathUpdate(id);
         }
         if (teacherJod.equals("english")){
-            classId=classTeacherMapper.getEmptyClassToEnglishUpdate(teacherId);
+            classId=classTeacherMapper.getEmptyClassToEnglishUpdate(id);
         }
         return classId;
     }

@@ -58,13 +58,13 @@ public class LoginServiceImpl implements LoginService {
                 String teacherJod=loginBean.getTeacherJod();
                 if(passwordFromDB.equals(password)){
                     if (teacherJod.equals("chinese")){
-                        loginResult.setClassId(classTeacherMapper.getClassByChineseTeacherId(loginBean.getTeacherId()));
+                        loginResult.setClassId(classTeacherMapper.getClassByChineseTeacherId(loginBean.getId()));
                     }
                     if (teacherJod.equals("math")){
-                        loginResult.setClassId(classTeacherMapper.getClassByMathTeacherId(loginBean.getTeacherId()));
+                        loginResult.setClassId(classTeacherMapper.getClassByMathTeacherId(loginBean.getId()));
                     }
                     if (teacherJod.equals("english")){
-                        loginResult.setClassId(classTeacherMapper.getClassByEnglishTeacherId(loginBean.getTeacherId()));
+                        loginResult.setClassId(classTeacherMapper.getClassByEnglishTeacherId(loginBean.getId()));
                     }
                     loginResult.setId(loginBean.getId());
                     loginResult.setName(loginBean.getName());

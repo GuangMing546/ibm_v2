@@ -5,9 +5,9 @@ public class Student {
     private String studentNumber;
     private String studentName;
     private String studentClass;
-    private double chineseScore;
-    private double mathScore;
-    private double englishScore;
+    private String chineseScore;
+    private String mathScore;
+    private String englishScore;
     private String userName;
     private String password;
 
@@ -43,27 +43,27 @@ public class Student {
         this.studentClass = studentClass;
     }
 
-    public double getChineseScore() {
+    public String getChineseScore() {
         return chineseScore;
     }
 
-    public void setChineseScore(double chineseScore) {
+    public void setChineseScore(String chineseScore) {
         this.chineseScore = chineseScore;
     }
 
-    public double getMathScore() {
+    public String getMathScore() {
         return mathScore;
     }
 
-    public void setMathScore(double mathScore) {
+    public void setMathScore(String mathScore) {
         this.mathScore = mathScore;
     }
 
-    public double getEnglishScore() {
+    public String getEnglishScore() {
         return englishScore;
     }
 
-    public void setEnglishScore(double englishScore) {
+    public void setEnglishScore(String englishScore) {
         this.englishScore = englishScore;
     }
 

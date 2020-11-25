@@ -15,15 +15,14 @@ public class StudentServiceImpl implements StudentService {
     @Resource
     StudentMapper studentMapper; //用来对student表进行操作
 
-
     //Admin的对student表的操作
     @Override
     public List<Student> getAllStudentToAdmin() {
         return studentMapper.getAllStudentToAdmin();
-
     }
     @Override
     public int insertStudentFromAdmin(Student student) {
+        student.setId(studentMapper.getMaxId()+1);
         return studentMapper.insertStudentFromAdmin(student);
     }
 

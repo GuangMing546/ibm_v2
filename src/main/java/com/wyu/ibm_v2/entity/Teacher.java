@@ -2,6 +2,7 @@ package com.wyu.ibm_v2.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 public class Teacher {
@@ -10,9 +11,8 @@ public class Teacher {
     private String teacherJod;
     private String userName;
     private String password;
-    private String teacherId;
     //这个属性是自己加的
-    private Set<String> classId;
+    private List<String> classId;
 
     public Integer getId() {
         return id;
@@ -22,21 +22,18 @@ public class Teacher {
         this.id = id;
     }
 
-    public Set<String> getClassId() {
+    public List<String> getClassId() {
         return classId;
     }
 
-    public void setClassId(Set<String> classId) {
+    public void setClassId(List<String> classId) {
         this.classId = classId;
     }
 
-    public String getTeacherId() {
-        return teacherId;
-    }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
+//    public void setTeacherId(String teacherId) {
+//        this.teacherId = (this.id).toString();
+//    }
 
 
 

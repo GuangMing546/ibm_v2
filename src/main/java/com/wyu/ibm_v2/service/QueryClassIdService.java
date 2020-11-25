@@ -4,6 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface QueryClassIdService {
-    public Set<String> queryClassIdForInsert(String teacherJod);
-    public Set<String> queryClassIdForUpdate(String teacherId,String teacherJod);
+    public List<String> queryClassIdForInsert(String teacherJod);
+    public List<String> queryClassIdForUpdate(Integer id,String teacherJod);
 }

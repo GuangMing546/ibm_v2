@@ -8,6 +8,7 @@ import java.util.Set;
 public interface StudentMapper {
     //Admin用户可以对student表进行的操作
     public List<Student> getAllStudentToAdmin();
+    public int getMaxId();
     public int insertStudentFromAdmin(Student student);
     public int updateStudentFromAdmin(Student student);
     public int deleteStudentFromAdmin(Integer id);

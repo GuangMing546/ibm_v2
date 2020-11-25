@@ -8,7 +8,7 @@
     </select>
 
     <select id="getTeacherByUserName" resultType="com.wyu.ibm_v2.util.LoginBean">
-        select id,password,teacher_name name ,teacher_id,teacher_jod from teacher where user_name=#{userName}
+        select id,password,teacher_name name ,teacher_jod from teacher where user_name=#{userName}
     </select>
 
     <select id="getStudentByUserName" resultType="com.wyu.ibm_v2.util.LoginBean">

@@ -7,24 +7,24 @@
 <!--    返回老师教的那几个班-->
 <!--    也可以作为插入老师操作时候，把teacherId置为0，来查出还没分配老师的班级-->
     <select id="getClassByChineseTeacherId" resultType="java.lang.String">
-        select class_id from class_teacher where chinese_teacher=#{teacherId}
+        select class_id from class_teacher where chinese_teacher=#{id}
     </select>
     <select id="getClassByMathTeacherId" resultType="java.lang.String">
-        select class_id from class_teacher where math_teacher=#{teacherId}
+        select class_id from class_teacher where math_teacher=#{id}
     </select>
     <select id="getClassByEnglishTeacherId" resultType="java.lang.String">
-        select class_id from class_teacher where English_teacher=#{teacherId}
+        select class_id from class_teacher where english_teacher=#{id}
     </select>
 
 <!--原来更新用的，那个老师还可以选择什么班-->
     <select id="getEmptyClassToChineseUpdate" resultType="java.lang.String">
-         select class_id from class_teacher where chinese_teacher=#{teacherId} or chinese_teacher='0'
+         select class_id from class_teacher where chinese_teacher=#{id} or chinese_teacher=0
     </select>
     <select id="getEmptyClassToMathUpdate" resultType="java.lang.String">
-         select class_id from class_teacher where math_teacher=#{teacherId} or math_teacher='0'
+         select class_id from class_teacher where math_teacher=#{id} or math_teacher=0
     </select>
     <select id="getEmptyClassToEnglishUpdate" resultType="java.lang.String">
-         select class_id from class_teacher where english_teacher=#{teacherId} or english_teacher='0'
+         select class_id from class_teacher where english_teacher=#{id} or english_teacher=0
     </select>
 
 
@@ -36,7 +36,7 @@
     <update id="updateMathTeacher" >
         update class_teacher set math_teacher=#{param2} where class_id=#{param1}
     </update>
-    <update id="updateEnglishTeacher" >
+    <update id="updateEnglishTeacher">
         update class_teacher set english_teacher=#{param2} where class_id=#{param1}
     </update>
 
